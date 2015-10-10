@@ -1,0 +1,70 @@
+<!DOCTYPE>
+<html>
+<head>
+	<title>CMPE235 Lab 6 Story Telling</title>
+	<link rel='stylesheet' href='Lab 6 Main.css'>
+</head>
+<body>
+	<header>
+		<h2>CMPE 235 Lab 6 Simple Story Telling</h2>
+		<h3>Wei Si 009345856</h3>
+	</header>
+	<div>
+		<form name="userInput">
+			<label for="name1">Enter a name </label>
+			<input type="text" id="name1" name="user_name1">
+
+			<label for="name2">Enter another name </label>
+			<input type="text" id="name2" name="user_name2">
+
+			<label>Select a number </label>
+			<select id="num" name="user_num">
+				<optgroup>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+				</optgroup>
+			</select>
+
+			<label for="place">Enter a place </label>
+			<input type="text" id="place" name="user_place">
+
+			<input type="button" value="Tell a Story Now!" onclick="randomStoryTelling()"></button>
+		</form>
+	</div>
+	<script>
+		function randomStoryTelling(){
+			var name1 = document.forms['userInput']['user_name1'].value;
+			var name2 = document.forms['userInput']['user_name2'].value;
+			var num = document.forms['userInput']['user_num'].value;
+			var addr = document.forms['userInput']['user_place'].value;
+
+			storyMaker(name1, name2, num, addr);
+		}
+
+		function storyMaker(name1, name2, num, addr){
+			var verbs = ['make', 'eat', 'beat', 'hug', 'enjoy'];
+			var nouns = ['popsicles', 'candies', 'dolls', 'cupcakes','car'];
+			var randomVerb = Math.floor(Math.random() * verbs.length);
+			var randomNoun = Math.floor(Math.random() * nouns.length);
+	
+			var s1 = 'Both ' + name1 + ' and ' + name2 + ' want to ' + verbs[randomVerb] + ' ' + num + ' ' + nouns[randomNoun] + ' at ' + addr + '.';
+			var s2 = 'Neither of ' + name1 + ' and ' + name2 + ' wants to ' + verbs[randomVerb] + ' ' + num + ' ' + nouns[randomNoun] + ' at ' + addr + '.';
+			var s3 = 'Either ' + name1 + ' or ' + name2 + ' wants to ' + verbs[randomVerb] + ' ' + num + ' ' + nouns[randomNoun] + ' at ' + addr + '.';
+			var s4 = 'Leo believes that ' + name1 + ' and ' + name2 + ' will ' + verbs[randomVerb] + ' ' + num + ' ' + nouns[randomNoun] + ' at ' + addr + '.';
+			var s5 = 'Leo heard that ' + name1 + ' and ' + name2 + ' would ' + verbs[randomVerb] + ' ' + num + ' ' + nouns[randomNoun] + ' at ' + addr + '.';
+			var s6 = 'Leo asked ' + name1 + ' to ' + verbs[randomVerb] + ' ' + num + ' ' + nouns[randomNoun] + ' with ' + name2 + ' at ' + addr;
+			var sentences = [s1, s2, s3, s4, s5, s6];
+			var randomSentence = Math.floor(Math.random() * sentences.length);
+
+			var myWindow = window.open();
+    		myWindow.document.write('<h2 class="newStory">New Story' + '<br>' + sentences[randomSentence] + '</h2>');
+		}
+	</script>
+
+</body>
+</html>
